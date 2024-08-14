@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Resizer</title>
+</head>
+<body>
+    <h1>Upload and Resize Image</h1>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required><br><br>
+        <label for="resize_choice">Resize for:</label><br>
+        <input type="radio" name="resize_choice" value="platform" required> Platform<br>
+        <select name="platform">
+            {% for platform in platforms %}
+                <option value="{{ platform }}">{{ platform.replace('_', ' ').title() }}</option>
+            {% endfor %}
+        </select><br><br>
+        <input type="radio" name="resize_choice" value="custom" required> Custom Dimensions<br>
+        Width: <input type="number" name="width" min="1"> px<br>
+        Height: <input type="number" name="height" min="1"> px<br><br>
+        <input type="submit" value="Resize Image">
+    </form>
+</body>
+</html>
